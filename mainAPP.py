@@ -65,18 +65,20 @@ if __name__ == '__main__':
     st.title('YOLOv5 PCB圖片檢測(Demo)')
     opt = parse_opt()
     weight = st.sidebar.file_uploader('上傳模型')
+    dirname = os.path.dirname(__file__)
     if weight is not None:
         # 構建目標文件路徑
-        file_path = os.path.join("yolov5\\data\\weights", weight.name)
+        file_path = os.path.join(dirname,"yolov5/data/weights", weight.name)
         # 打開文件，寫入文件內容
         with open(file_path, "wb") as f:
             f.write(weight.getbuffer())
         opt.weights = file_path
     else:
-        opt.weights = "yolov5\\runs\\train\\exp5\\weights\\best.pt"
+        file_path = os.path.join(dirname, 'yolov5/runs/train/exp5/weights/best.pt')
+        opt.weights = file_path
 
     source = ("圖片檢測", "影片檢測")
-    source_index = st.sidebar.selectbox("选择输入", range(
+    source_index = st.sidebar.selectbox("選擇輸入模式", range(
         len(source)), format_func=lambda x: source[x])
 
     if source_index == 0:
