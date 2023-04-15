@@ -1,0 +1,34 @@
+{
+    // 使用 IntelliSense 以得知可用的屬性。
+    // 暫留以檢視現有屬性的描述。
+    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: PCB train",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--data","MyPCBdataset\\PCB.yaml",
+                     "--epochs","200",
+                     "--batch-size","20",
+                     "--weights","yolov5\\runs\\train\\exp4\\weights\\best.pt"
+            ]
+        },
+        {
+            "name": "Python: PCB detect",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--source","MyPCBdataset\\test\\images",
+                     "--weights","yolov5\\runs\\train\\exp5\\weights\\best.pt",
+                     // "--view-img",
+                     "--device","0"
+            ]
+        }
+    ]
+}
