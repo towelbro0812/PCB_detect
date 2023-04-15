@@ -62,9 +62,9 @@ def parse_opt():
 
 if __name__ == '__main__':
 
-    st.title('YOLOv5 PCB圖片檢測(Demo)')
+    st.title('YOLOv5 PCB瑕疵檢測(Demo)')
     opt = parse_opt()
-    weight = st.sidebar.file_uploader('上傳模型')
+    weight = st.sidebar.file_uploader('上傳模型，如果沒有會自動抓最新模型')
     dirname = os.path.dirname(__file__)
     if weight is not None:
         # 構建目標文件路徑
